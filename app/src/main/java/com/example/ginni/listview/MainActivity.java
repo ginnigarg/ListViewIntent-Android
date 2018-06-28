@@ -3,9 +3,11 @@ package com.example.ginni.listview;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,19 +23,28 @@ public class MainActivity extends AppCompatActivity {
         button = (Button) findViewById(R.id.button);
         editText = (EditText) findViewById(R.id.editText);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        editText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                text = editText.getText().toString();
-                Intent intent = new Intent(MainActivity.this , ListviewActivity.class);
-                intent.putExtra("data",text);
-                startActivity(intent);
+                editText.setText("");
             }
         });
 
 
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                text = editText.getText().toString();
+                if(text.contentEquals("")) {
+                    Toast.makeText(getApplicationContext(),"Enter some Data",Toast.LENGTH_LONG);
+                } else {
+                    Intent intent = new Intent(MainActivity.this , ListviewActivity.class);
+                    intent.putExtra("data",text);
+                    startActivity(intent);
+                }
 
-
+            }
+        });
 
     }
 }
