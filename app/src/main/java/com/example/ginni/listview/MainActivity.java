@@ -3,7 +3,6 @@ package com.example.ginni.listview;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 text = editText.getText().toString();
                 if(text.contentEquals("")) {
-                    Toast.makeText(getApplicationContext(),"Enter some Data",Toast.LENGTH_LONG);
+                    Toast.makeText(getApplicationContext(),"Enter some Data",Toast.LENGTH_LONG).show();
                 } else {
                     Intent intent = new Intent(MainActivity.this , ListviewActivity.class);
                     intent.putExtra("data",text);
