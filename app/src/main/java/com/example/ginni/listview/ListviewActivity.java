@@ -15,19 +15,17 @@ import java.util.ArrayList;
 public class ListviewActivity extends AppCompatActivity {
 
     ListView listView;
-    static ArrayList<String> array = new ArrayList<String>();
+    static ArrayList<String> array = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listview);
 
-        Intent prevIntent = getIntent();
-        String text = prevIntent.getStringExtra("data");
-
+        String text = getIntent().getStringExtra("data");
         array.add(text);
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this , android.R.layout.simple_list_item_1, array);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this , android.R.layout.simple_list_item_1, array);
 
         listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(arrayAdapter);
@@ -60,6 +58,5 @@ public class ListviewActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 }
